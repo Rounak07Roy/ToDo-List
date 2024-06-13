@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+*Working of the To-Do List Component*
+The To-Do List component allows users to:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Add a Task: Users can add a new task with a status (Pending/Completed).
+Remove a Task: Users can remove tasks from the list.
+Mark Task as Completed/Pending: Users can toggle the completion status of tasks.
+Filter Tasks: Users can filter tasks to view All, Completed, or Pending tasks.
+Persist Data: The tasks are stored in localStorage to persist data across page reloads.
 
-## Available Scripts
 
-In the project directory, you can run:
+Testing Guidance--
+Run the Application:
 
-### `npm start`
+npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This will start the development server and open the application in your default browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Add Tasks:
 
-### `npm test`
+Type a task in the input box.
+Select a status (Pending/Completed) from the dropdown next to the input.
+Click "Add Task".
+Expected Result: The task should appear in the list with the specified status (Pending or Completed).
+Remove Tasks:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Click the "Remove" button next to a task.
+Expected Result: The task should be removed from the list.
+Mark Task as Completed/Pending:
 
-### `npm run build`
+Click on the task text.
+Expected Result: The task should toggle between Completed and Pending status, indicated by a strikethrough for completed tasks.
+Filter Tasks:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Use the filter dropdown to select "All", "Completed", or "Pending".
+Expected Result: The list should display tasks based on the selected filter criteria.
+LocalStorage Persistence:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Add several tasks and note their statuses.
+Refresh the browser.
+Expected Result: All tasks should persist with their correct statuses.
+Input Validation:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Try to add a task without typing anything in the input box.
+Expected Result: An alert should appear stating "Task cannot be empty", and the task should not be added.
