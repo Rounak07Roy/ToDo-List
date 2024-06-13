@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
+  const [newTaskStatus, setNewTaskStatus] = useState('pending');
   const [filter, setFilter] = useState('all');
 
   useEffect(() => {
@@ -15,8 +16,11 @@ const TodoList = () => {
   }, [tasks]);
 
   const addTask = () => {
-    if (newTask.trim() === '') return;
-    setTasks([...tasks, { text: newTask, completed: false }]);
+    if (newTask.trim() === '') {
+      alert('Task cannot be empty');
+      return;
+    }
+    setTasks([...tasks, { text: newTask, completed: newTaskStatus === 'completed' }]);
     setNewTask('');
   };
 
@@ -51,12 +55,18 @@ const TodoList = () => {
         onChange={(e) => setNewTask(e.target.value)}
         placeholder="Add a new task"
       />
-      <button onClick={addTask}>Add Task</button>
-      <select onChange={handleFilterChange} value={filter}>
-        <option value="all">All</option>
-        <option value="completed">Completed</option>
+      <select onChange={(e) => setNewTaskStatus(e.target.value)} value={newTaskStatus}>
         <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
       </select>
+      <button onClick={addTask}>Add Task</button>
+      <div>
+        <select onChange={handleFilterChange} value={filter}>
+          <option value="all">All</option>
+          <option value="completed">Completed</option>
+          <option value="pending">Pending</option>
+        </select>
+      </div>
       <ul>
         {filteredTasks.map((task, index) => (
           <li key={index}>
@@ -66,7 +76,7 @@ const TodoList = () => {
               }}
               onClick={() => toggleTaskCompletion(index)}
             >
-              {task.text}
+              {task.text} ({task.completed ? 'Completed' : 'Pending'})
             </span>
             <button onClick={() => removeTask(index)}>Remove</button>
           </li>
